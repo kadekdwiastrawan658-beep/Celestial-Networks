@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Celestial Store</title>
+  <title>Celestial Network</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,13 +14,13 @@
   <style>
     body {
       font-family: 'Poppins', 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #0b1220 60%, #1a237e 100%);
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1a4d 50%, #0f0f2e 100%);
       min-height: 100vh;
       position: relative;
       overflow-x: hidden;
     }
 
-    /* Star background */
+    /* Animated star background */
     .stars {
       position: fixed;
       top: 0; left: 0; width: 100vw; height: 100vh;
@@ -31,21 +31,37 @@
       position: absolute;
       background: white;
       border-radius: 50%;
-      opacity: 0.7;
-      animation: twinkle 2s infinite ease-in-out;
+      opacity: 0.6;
+      animation: twinkle 3s infinite ease-in-out;
     }
     @keyframes twinkle {
-      0%, 100% { opacity: 0.7; }
-      50% { opacity: 0.3; }
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.9; }
     }
 
     .glow-btn {
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+      box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
       transition: 0.3s;
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
     }
     .glow-btn:hover {
-      box-shadow: 0 0 25px rgba(255, 204, 0, 0.9);
+      box-shadow: 0 0 30px rgba(99, 102, 241, 1);
       transform: scale(1.05);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #6366f1 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
     }
   </style>
 </head>
@@ -55,295 +71,443 @@
 <div class="stars" id="stars"></div>
 
 <!-- NAVBAR -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#0f172a]/80 backdrop-blur-md border-b border-gray-800">
-  <h1 class="text-xl font-bold text-yellow-400" style="font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">Celestial Store</h1>
-  <div class="flex gap-6 items-center">
-    <a href="#beranda" class="text-gray-300 hover:text-white">Ringkasan Server</a>
-    <a href="#toko" class="text-gray-300 hover:text-white">Store</a>
-    <a href="#vote" class="text-gray-300 hover:text-white">Vote</a>
-    <a href="#tim" class="text-gray-300 hover:text-white">Staff</a>
-    <a href="#leaderboard" class="text-gray-300 hover:text-white">Top Player</a>
-    <a href="#" class="bg-yellow-400 text-black px-4 py-2 rounded-lg glow-btn">
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#0a0e27]/70 backdrop-blur-lg border-b border-indigo-800/30">
+  <h1 class="text-2xl font-bold gradient-text" style="font-family: 'Orbitron', sans-serif; letter-spacing: 3px;">CELESTIAL NETWORK</h1>
+  <div class="flex gap-8 items-center">
+    <a href="#beranda" class="text-gray-400 hover:text-indigo-400 transition">Server</a>
+    <a href="#gamemodes" class="text-gray-400 hover:text-indigo-400 transition">Game Modes</a>
+    <a href="#toko" class="text-gray-400 hover:text-indigo-400 transition">Store</a>
+    <a href="#leaderboard" class="text-gray-400 hover:text-indigo-400 transition">Leaderboard</a>
+    <a href="#komunitas" class="text-gray-400 hover:text-indigo-400 transition">Komunitas</a>
+    <a href="#" class="glow-btn text-white px-6 py-2 rounded-lg font-semibold">
       Main Sekarang
     </a>
   </div>
 </nav>
 
 <!-- WELCOME SECTION ATAS -->
-<section class="flex flex-col items-center justify-center min-h-[30vh] pt-32 pb-10">
-  <h1 class="text-5xl md:text-7xl font-bold text-yellow-400 text-center" style="font-family: 'Orbitron', sans-serif; letter-spacing: 2px;">Welcome To Celestial Network</h1>
-</section>
-
-<!-- CARD ROW SECTION -->
-<section class="flex flex-wrap justify-center gap-8 px-4 pb-16 z-10 relative">
-  <!-- Ringkasan Server -->
-  <a href="#beranda" class="group max-w-xs w-full bg-[#151c2c] rounded-2xl shadow-lg p-8 text-center border border-yellow-400 hover:scale-105 hover:shadow-yellow-400/30 transition-transform duration-300 flex flex-col items-center">
-    <span class="material-symbols-outlined text-yellow-400 text-5xl mb-2 group-hover:animate-bounce">home</span>
-    <h2 class="text-2xl font-bold mb-1 text-yellow-400" style="font-family: 'Orbitron', sans-serif;">Ringkasan Server</h2>
-    <p class="text-gray-300 text-sm">Ringkasan server dan update terbaru dari Celestial Network.</p>
-  </a>
-  <!-- Highlight Produk -->
-  <a href="#toko" class="group max-w-xs w-full bg-[#151c2c] rounded-2xl shadow-lg p-8 text-center border border-yellow-400 hover:scale-105 hover:shadow-yellow-400/30 transition-transform duration-300 flex flex-col items-center">
-    <span class="material-symbols-outlined text-yellow-400 text-5xl mb-2 group-hover:animate-bounce">storefront</span>
-    <h2 class="text-2xl font-bold mb-1 text-yellow-400" style="font-family: 'Orbitron', sans-serif;">Highlight Produk</h2>
-    <p class="text-gray-300 text-sm">Lihat produk populer dan rank terbaik yang banyak dipilih.</p>
-  </a>
-  <!-- Reward Vote -->
-  <a href="#vote" class="group max-w-xs w-full bg-[#151c2c] rounded-2xl shadow-lg p-8 text-center border border-yellow-400 hover:scale-105 hover:shadow-yellow-400/30 transition-transform duration-300 flex flex-col items-center">
-    <span class="material-symbols-outlined text-yellow-400 text-5xl mb-2 group-hover:animate-bounce">how_to_vote</span>
-    <h2 class="text-2xl font-bold mb-1 text-yellow-400" style="font-family: 'Orbitron', sans-serif;">Reward Vote</h2>
-    <p class="text-gray-300 text-sm">Dukung server kami dan dapatkan reward menarik + progress vote.</p>
-  </a>
-  <!-- Staff -->
-  <a href="#tim" class="group max-w-xs w-full bg-[#151c2c] rounded-2xl shadow-lg p-8 text-center border border-yellow-400 hover:scale-105 hover:shadow-yellow-400/30 transition-transform duration-300 flex flex-col items-center">
-    <span class="material-symbols-outlined text-yellow-400 text-5xl mb-2 group-hover:animate-bounce">groups</span>
-    <h2 class="text-2xl font-bold mb-1 text-yellow-400" style="font-family: 'Orbitron', sans-serif;">Staff</h2>
-    <p class="text-gray-300 text-sm">Kenali staff dan role server (Admin, Mod, dll).</p>
-  </a>
-  <!-- Top Player -->
-  <a href="#leaderboard" class="group max-w-xs w-full bg-[#151c2c] rounded-2xl shadow-lg p-8 text-center border border-yellow-400 hover:scale-105 hover:shadow-yellow-400/30 transition-transform duration-300 flex flex-col items-center">
-    <span class="material-symbols-outlined text-yellow-400 text-5xl mb-2 group-hover:animate-bounce">leaderboard</span>
-    <h2 class="text-2xl font-bold mb-1 text-yellow-400" style="font-family: 'Orbitron', sans-serif;">Top Player</h2>
-    <p class="text-gray-300 text-sm">Lihat top player dan statistik peringkat tertinggi di server.</p>
-  </a>
-</section>
-
-<!-- SECTION: TENTANG SERVER -->
-<section id="beranda" class="px-4 py-16 z-10 relative max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-yellow-400 text-center mb-8" style="font-family: 'Orbitron', sans-serif;">TENTANG SERVER</h2>
-  <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30">
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-[#0f172a] p-4 rounded-xl">
-        <h3 class="text-xl font-bold text-yellow-400 mb-2"><span class="material-symbols-outlined text-yellow-400 text-2xl">campaign</span> Update Terbaru</h3>
-        <ul class="text-gray-300 space-y-2 text-sm">
-          <li>• Server Minecraft terbaru telah hadir!</li>
-          <li>• Event bulanan dengan hadiah eksklusif</li>
-          <li>• Sistem rank baru yang lebih menarik</li>
-        </ul>
+<section class="flex flex-col items-center justify-center min-h-[40vh] pt-32 pb-16">
+  <div class="text-center max-w-3xl">
+    <h1 class="text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Orbitron', sans-serif; letter-spacing: 3px;">
+      Selamat Datang di<br>
+      <span class="gradient-text">CELESTIAL NETWORK</span>
+    </h1>
+    <p class="text-xl text-gray-400 mb-8">Tempat semua orang mencari teman baru disini</p>
+    
+    <!-- SERVER STATS -->
+    <div class="grid grid-cols-3 gap-6 mb-8">
+      <div class="bg-[#1a1f3a]/60 rounded-lg p-4 border border-indigo-800/30 backdrop-blur">
+        <p class="text-3xl font-bold text-indigo-400">0</p>
+        <p class="text-sm text-gray-400 mt-1">Pemain Online</p>
       </div>
-      <div class="bg-[#0f172a] p-4 rounded-xl">
-        <h3 class="text-xl font-bold text-yellow-400 mb-2"><span class="material-symbols-outlined text-yellow-400 text-2xl">insights</span> Status Server</h3>
-        <ul class="text-gray-300 space-y-2 text-sm">
-          <li>• Players Online: 0/100</li>
-          <li>• Version: 1.21.4</li>
-          <li>• Mode: Skyblock + Economy + Creative</li>
-        </ul>
+      <div class="bg-[#1a1f3a]/60 rounded-lg p-4 border border-indigo-800/30 backdrop-blur">
+        <p class="text-3xl font-bold text-indigo-400">1.21.6+</p>
+        <p class="text-sm text-gray-400 mt-1">Versi Server</p>
+      </div>
+      <div class="bg-[#1a1f3a]/60 rounded-lg p-4 border border-indigo-800/30 backdrop-blur">
+        <p class="text-3xl font-bold text-indigo-400">0</p>
+        <p class="text-sm text-gray-400 mt-1">Pemain Terdaftar</p>
+      </div>
+    </div>
+
+    <div class="flex gap-4 justify-center">
+      <button class="glow-btn text-white px-8 py-3 rounded-lg font-semibold">Main Sekarang</button>
+      <button class="border border-indigo-500 text-indigo-300 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-500/10 transition">Bergabung Discord</button>
+    </div>
+  </div>
+</section>
+
+<!-- SERVER ADDRESS -->
+<section class="flex justify-center items-center gap-4 px-4 mb-16 z-10 relative">
+  <div class="bg-[#1a1f3a]/60 rounded-lg px-8 py-4 border border-indigo-800/30 backdrop-blur flex items-center gap-4">
+    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+    <span class="text-gray-300">Server online • <span class="text-indigo-300 font-semibold">play.celestialnetwork.id</span></span>
+  </div>
+</section>
+
+<!-- SECTION: GAME MODES -->
+<section id="gamemodes" class="px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Orbitron', sans-serif;">GAME MODES</h2>
+    <p class="text-center text-gray-400 mb-16">Jelajahi berbagai mode permainan yang unik, menantang, dan penuh petualangan seru</p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Survival Mix -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-xl">🌍</span>
+        </div>
+        <h3 class="text-xl font-bold text-indigo-300 mb-2">Survival Mix</h3>
+        <p class="text-gray-400 text-sm mb-4">Survival dengan twist! Enchant kustom, item unik, pets, dan banyak lagi!</p>
+        <div class="text-xs text-gray-500">Berjalan sejak: 23 Juli 2022</div>
+      </div>
+
+      <!-- SkyBlock Tycoon -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-xl">🏝️</span>
+        </div>
+        <h3 class="text-xl font-bold text-purple-300 mb-2">SkyBlock Tycoon</h3>
+        <p class="text-gray-400 text-sm mb-4">Jadilah pemain terkaya! Generator, energi, island modules, dan banyak lagi!</p>
+        <div class="text-xs text-gray-500">Berjalan sejak: 26 Agustus 2023</div>
+      </div>
+
+      <!-- Creative Mode -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-xl">🎨</span>
+        </div>
+        <h3 class="text-xl font-bold text-cyan-300 mb-2">Creative Mode</h3>
+        <p class="text-gray-400 text-sm mb-4">Buat bangunan dengan tools yang kuat! WorldEdit, Arceon, aset, dan lainnya!</p>
+        <div class="text-xs text-gray-500">Berjalan sejak: 7 Agustus 2024</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION: STAFF -->
-<section id="tim" class="px-4 py-16 z-10 relative max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-yellow-400 text-center mb-8" style="font-family: 'Orbitron', sans-serif;">Staff</h2>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30">
-      <h3 class="text-xl font-bold text-yellow-400 mb-4"><span class="material-symbols-outlined text-yellow-400 text-2xl">workspace_premium</span> Admin</h3>
-      <div class="space-y-3">
-        <div class="flex items-center gap-3 bg-[#0f172a] p-3 rounded-lg">
-          <div class="w-10 h-10 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold">A</div>
-          <div>
-            <p class="text-white font-bold">aetherkyle</p>
-            <p class="text-gray-400 text-sm">Owner</p>
+<!-- SECTION: ABOUT SERVER -->
+<section id="tentang" class="px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Orbitron', sans-serif;">TENTANG CELESTIAL NETWORK</h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Pertama kali dirilis pada 7 Juli 2022, Celestial Network adalah server Minecraft Indonesia yang menghadirkan pengalaman bermain terbaik untuk semua pemain.</p>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-indigo-300 mb-3">🛡️ Anti-Cheat & Moderasi Kuat</h3>
+        <p class="text-gray-400 text-sm">Dilengkapi sistem Anti-Cheat terbaik dan tim moderasi profesional yang aktif, memastikan pengalaman bermain yang adil untuk semua pemain.</p>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-purple-300 mb-3">⚡ Latensi Rendah & Uptime Tinggi</h3>
+        <p class="text-gray-400 text-sm">Infrastruktur premium memastikan latensi rendah dengan uptime 99,9%. Main kapan saja tanpa khawatir server down.</p>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-cyan-300 mb-3">💾 Backup Data Maksimal</h3>
+        <p class="text-gray-400 text-sm">Sistem backup otomatis berjalan setiap beberapa jam, menjamin seluruh progress dan data kamu tersimpan aman.</p>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-pink-300 mb-3">👥 Komunitas Aktif & Ramah</h3>
+        <p class="text-gray-400 text-sm">Bergabung dengan ribuan member aktif di Discord. Kami berusaha membangun lingkungan positif dan saling menghargai.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: RANK / STORE -->
+<section id="toko" class="px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Orbitron', sans-serif;">PREMIUM RANK</h2>
+    <p class="text-center text-gray-400 mb-16">Tingkatkan pengalaman bermain Anda dengan rank premium eksklusif</p>
+
+    <div class="grid md:grid-cols-5 gap-4">
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">⭐</div>
+        <h3 class="font-bold text-indigo-300 mb-2">Asteroid</h3>
+        <p class="text-xs text-gray-400 mb-3">Paling Populer!</p>
+        <p class="text-2xl font-bold text-indigo-400 mb-4">Rp 40K</p>
+        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-purple-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">💎</div>
+        <h3 class="font-bold text-purple-300 mb-2">Bulan</h3>
+        <p class="text-xs text-gray-400 mb-3">Banyak Dipilih</p>
+        <p class="text-2xl font-bold text-purple-400 mb-4">Rp 70K</p>
+        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-cyan-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">🌟</div>
+        <h3 class="font-bold text-cyan-300 mb-2">Orbiter</h3>
+        <p class="text-xs text-gray-400 mb-3">Banyak Dipilih</p>
+        <p class="text-2xl font-bold text-cyan-400 mb-4">Rp 100K</p>
+        <button class="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-pink-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">🌌</div>
+        <h3 class="font-bold text-pink-300 mb-2">Galaxy</h3>
+        <p class="text-xs text-gray-400 mb-3">Banyak Dipilih</p>
+        <p class="text-2xl font-bold text-pink-400 mb-4">Rp 160K</p>
+        <button class="w-full bg-pink-600 hover:bg-pink-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-6 border border-yellow-600/50 backdrop-blur text-center relative">
+        <div class="absolute top-2 right-2 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">BEST VALUE</div>
+        <div class="text-4xl mb-3">✨</div>
+        <h3 class="font-bold text-yellow-300 mb-2">Milkyway</h3>
+        <p class="text-xs text-gray-300 mb-3">Terbaik!</p>
+        <p class="text-2xl font-bold text-yellow-400 mb-4">Rp 200K</p>
+        <button class="w-full bg-yellow-600 hover:bg-yellow-700 text-black py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: TOP PLAYERS -->
+<section id="leaderboard" class="px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Orbitron', sans-serif;">PEMAIN TERATAS</h2>
+    <p class="text-center text-gray-400 mb-16">Berkompetisi dan naik ke puncak!</p>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Top Donatur -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-indigo-300 mb-4">💰 Top Donatur</h3>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center font-bold text-black">1</div>
+            <div>
+              <p class="font-semibold">player 1</p>
+              <p class="text-sm text-gray-400">Rp 4.780.000</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center font-bold text-black">2</div>
+            <div>
+              <p class="font-semibold">Player 2</p>
+              <p class="text-sm text-gray-400">Rp 3.200.000</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center font-bold text-black">3</div>
+            <div>
+              <p class="font-semibold">Player 3</p>
+              <p class="text-sm text-gray-400">Rp 2.150.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill Power -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-purple-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-purple-300 mb-4">⚔️ Skill Power Survival</h3>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center font-bold text-black">1</div>
+            <div>
+              <p class="font-semibold">Player 1</p>
+              <p class="text-sm text-gray-400">1.148 Power</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center font-bold text-black">2</div>
+            <div>
+              <p class="font-semibold">Player 2</p>
+              <p class="text-sm text-gray-400">985 Power</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center font-bold text-black">3</div>
+            <div>
+              <p class="font-semibold">Player 3</p>
+              <p class="text-sm text-gray-400">875 Power</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top Credits -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-cyan-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-cyan-300 mb-4">💎 Top Credits Tycoon</h3>
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center font-bold text-black">1</div>
+            <div>
+              <p class="font-semibold">Player 1</p>
+              <p class="text-sm text-gray-400">1.39T Credits</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-gray-300 to-gray-500 rounded-full flex items-center justify-center font-bold text-black">2</div>
+            <div>
+              <p class="font-semibold">Player 2</p>
+              <p class="text-sm text-gray-400">950B Credits</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center font-bold text-black">3</div>
+            <div>
+              <p class="font-semibold">Player 3</p>
+              <p class="text-sm text-gray-400">750B Credits</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30">
-      <h3 class="text-xl font-bold text-yellow-400 mb-4"><span class="material-symbols-outlined text-yellow-400 text-2xl">sports_esports</span> Moderator</h3>
-      <div class="space-y-3">
-        <div class="flex items-center gap-3 bg-[#0f172a] p-3 rounded-lg">
-          <div class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-black font-bold">M</div>
-          <div>
-            <p class="text-white font-bold">ModPlayer1</p>
-            <p class="text-gray-400 text-sm">Moderator</p>
-          </div>
-        </div>
-        <div class="flex items-center gap-3 bg-[#0f172a] p-3 rounded-lg">
-          <div class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-black font-bold">M</div>
-          <div>
-            <p class="text-white font-bold">ModPlayer2</p>
-            <p class="text-gray-400 text-sm">Moderator</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
-<!-- SECTION: RANK -->
-<section id="toko" class="px-4 py-16 z-10 relative max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-yellow-400 text-center mb-8" style="font-family: 'Orbitron', sans-serif;">LIST RANK</h2>
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30 text-center hover:scale-105 transition-transform">
-      <span class="material-symbols-outlined text-yellow-400 text-4xl mb-2">workspace_premium</span>
-      <h3 class="text-xl font-bold text-white mb-2">Asteroid</h3>
-      <p class="text-gray-400 text-sm mb-3">Paling populer!</p>
-      <p class="text-yellow-400 font-bold text-2xl">Rp 40.000</p>
-    </div>
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30 text-center hover:scale-105 transition-transform">
-      <span class="material-symbols-outlined text-yellow-400 text-4xl mb-2">diamond</span>
-      <h3 class="text-xl font-bold text-white mb-2">Bulan</h3>
-      <p class="text-gray-400 text-sm mb-3">Paling banyak dipilih</p>
-      <p class="text-yellow-400 font-bold text-2xl">Rp 70.000</p>
-    </div>
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30 text-center hover:scale-105 transition-transform">
-      <span class="material-symbols-outlined text-yellow-400 text-4xl mb-2">diamond</span>
-      <h3 class="text-xl font-bold text-white mb-2">Orbiter</h3>
-      <p class="text-gray-400 text-sm mb-3">Paling banyak dipilih</p>
-      <p class="text-yellow-400 font-bold text-2xl">Rp 100.000</p>
-    </div>
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30 text-center hover:scale-105 transition-transform">
-      <span class="material-symbols-outlined text-yellow-400 text-4xl mb-2">diamond</span>
-      <h3 class="text-xl font-bold text-white mb-2">Nebula</h3>
-      <p class="text-gray-400 text-sm mb-3">Paling banyak dipilih</p>
-      <p class="text-yellow-400 font-bold text-2xl">Rp 160.000</p>
-    </div>
-    <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30 text-center hover:scale-105 transition-transform">
-      <span class="material-symbols-outlined text-yellow-400 text-4xl mb-2">star</span>
-      <h3 class="text-xl font-bold text-white mb-2">Cosmic</h3>
-      <p class="text-gray-400 text-sm mb-3">Best value!</p>
-      <p class="text-yellow-400 font-bold text-2xl">Rp 200.000</p>
+<!-- SECTION: KOMUNITAS -->
+<section id="komunitas" class="px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Orbitron', sans-serif;">BERGABUNG DENGAN KOMUNITAS</h2>
+    <p class="text-center text-gray-400 mb-16">Tetap terhubung dengan kami di media sosial untuk pembaruan terbaru</p>
+
+    <div class="grid md:grid-cols-4 gap-8">
+      <a href="https://discord.gg/celestial" class="card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-indigo-800/30 backdrop-blur text-center hover:border-indigo-500/60">
+        <div class="text-5xl mb-4">💬</div>
+        <h3 class="text-lg font-bold text-indigo-300 mb-2">Discord</h3>
+        <p class="text-sm text-gray-400">Bergabung dengan komunitas kami di Discord</p>
+      </a>
+      
+      <a href="https://tiktok.com/@celestialnetwork" class="card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-purple-800/30 backdrop-blur text-center hover:border-purple-500/60">
+        <div class="text-5xl mb-4">🎵</div>
+        <h3 class="text-lg font-bold text-purple-300 mb-2">TikTok</h3>
+        <p class="text-sm text-gray-400">Konten menarik dan klip seru</p>
+      </a>
+
+      <a href="https://instagram.com/celestialnetwork" class="card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-cyan-800/30 backdrop-blur text-center hover:border-cyan-500/60">
+        <div class="text-5xl mb-4">📷</div>
+        <h3 class="text-lg font-bold text-cyan-300 mb-2">Instagram</h3>
+        <p class="text-sm text-gray-400">Update dan galeri terbaru</p>
+      </a>
+
+      <a href="https://wa.me/6281337574016" class="card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-pink-800/30 backdrop-blur text-center hover:border-pink-500/60">
+        <div class="text-5xl mb-4">💚</div>
+        <h3 class="text-lg font-bold text-pink-300 mb-2">WhatsApp</h3>
+        <p class="text-sm text-gray-400">Berlangganan channel kami</p>
+      </a>
     </div>
   </div>
 </section>
-
-<!-- SECTION: REWARD VOTE -->
-<section id="vote" class="px-4 py-16 z-10 relative max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-yellow-400 text-center mb-8" style="font-family: 'Orbitron', sans-serif;">Reward Vote</h2>
-  <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30">
-    <div class="mb-6">
-      <div class="flex justify-between text-sm mb-2">
-        <span class="text-gray-300">Progress Vote Bulan Ini</span>
-        <span class="text-yellow-400">75%</span>
-      </div>
-      <div class="w-full bg-[#0f172a] rounded-full h-4">
-        <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 h-4 rounded-full" style="width: 75%"></div>
-      </div>
-    </div>
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="bg-[#0f172a] p-4 rounded-xl">
-        <h3 class="text-xl font-bold text-yellow-400 mb-2"><span class="material-symbols-outlined text-yellow-400 text-2xl">card_giftcard</span> Reward Vote</h3>
-        <ul class="text-gray-300 space-y-2 text-sm">
-          <li>• 5000 Coins</li>
-          <li>• 3 Key crates</li>
-          <li>• Tag \"Voter\"</li>
-        </ul>
-      </div>
-      <div class="bg-[#0f172a] p-4 rounded-xl">
-        <h3 class="text-xl font-bold text-yellow-400 mb-2"><span class="material-symbols-outlined text-yellow-400 text-2xl">link</span> Link Vote</h3>
-        <a href="#" class="block bg-yellow-400 text-black text-center py-2 rounded-lg glow-btn mt-2">Vote Sekarang</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION: TOP PLAYER -->
-<section id="leaderboard" class="px-4 py-16 z-10 relative max-w-4xl mx-auto">
-  <h2 class="text-3xl font-bold text-yellow-400 text-center mb-8" style="font-family: 'Orbitron', sans-serif;">Top Player</h2>
-  <div class="bg-[#151c2c] rounded-2xl p-6 border border-yellow-400/30">
-    <table class="w-full text-left">
-      <thead>
-        <tr class="border-b border-gray-700">
-          <th class="py-3 text-gray-400">#</th>
-          <th class="py-3 text-gray-400">Player</th>
-          <th class="py-3 text-gray-400">Stats</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="border-b border-gray-800">
-          <td class="py-3 text-yellow-400 font-bold">1</td>
-          <td class="py-3 text-white">Player 1</td>
-          <td class="py-3 text-gray-300"><span class="material-symbols-outlined text-yellow-400 text-sm">star</span> 2500 | <span class="material-symbols-outlined text-green-400 text-sm">paid</span> 10M</td>
-        </tr>
-        <tr class="border-b border-gray-800">
-          <td class="py-3 text-gray-300 font-bold">2</td>
-          <td class="py-3 text-white">Player 2</td>
-          <td class="py-3 text-gray-300"><span class="material-symbols-outlined text-yellow-400 text-sm">star</span> 2100 | <span class="material-symbols-outlined text-green-400 text-sm">paid</span> 8.5M</td>
-        </tr>
-        <tr class="border-b border-gray-800">
-          <td class="py-3 text-amber-600 font-bold">3</td>
-          <td class="py-3 text-white">Player 3</td>
-          <td class="py-3 text-gray-300"><span class="material-symbols-outlined text-yellow-400 text-sm">star</span> 1800 | <span class="material-symbols-outlined text-green-400 text-sm">paid</span> 7M</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- Material Symbols (Google Icons) -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 <script>
 // Generate random stars
-function createStars(count = 80) {
+function createStars(count = 100) {
   const stars = document.getElementById('stars');
   if (!stars) return;
   for (let i = 0; i < count; i++) {
     const star = document.createElement('div');
     star.className = 'star';
-    const size = Math.random() * 2 + 1;
+    const size = Math.random() * 2.5 + 0.5;
     star.style.width = `${size}px`;
     star.style.height = `${size}px`;
     star.style.top = `${Math.random() * 100}vh`;
     star.style.left = `${Math.random() * 100}vw`;
-    star.style.opacity = Math.random() * 0.7 + 0.3;
-    star.style.animationDuration = `${1.5 + Math.random() * 2}s`;
+    star.style.opacity = Math.random() * 0.8 + 0.2;
+    star.style.animationDuration = `${2 + Math.random() * 3}s`;
     stars.appendChild(star);
   }
 }
-window.addEventListener('DOMContentLoaded', () => createStars(80));
-</script>
 
-<!-- PRODUK -->
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 
+window.addEventListener('DOMContentLoaded', () => createStars(100));
 
-<!-- MODAL INPUT USERNAME -->
-<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center">
-  <div class="bg-[#1e293b] p-6 rounded-xl w-80">
-    <h2 class="text-lg font-bold mb-3">Masukkan Username</h2>
+let selectedRank = "";
+let selectedPrice = "";
 
-    <input id="username" type="text" placeholder="Username kamu"
-      class="w-full p-2 rounded bg-[#0f172a] mb-4 outline-none">
+function beliRank(rank, price) {
+  selectedRank = rank;
+  selectedPrice = price;
+  document.getElementById("modal").classList.remove("hidden");
+}
 
-    <button onclick="kirimWA()" class="bg-yellow-400 text-black px-4 py-2 rounded w-full glow-btn">
-      Lanjut ke WhatsApp
-    </button>
-  </div>
-</div>
+function closeModal() {
+  document.getElementById("modal").classList.add("hidden");
+}
 
-<!-- FOOTER -->
-<footer class="text-center py-6 text-gray-400">
-  © 2026 Celestial Network
-</footer>
+function kirimWA() {
+  const username = document.getElementById("username").value;
 
-<script>
-  let selectedRank = "";
-  let selectedPrice = "";
-
-  function beliRank(rank, price) {
-    selectedRank = rank;
-    selectedPrice = price;
-    document.getElementById("modal").classList.remove("hidden");
+  if (!username) {
+    alert("Masukkan username terlebih dahulu!");
+    return;
   }
 
-  function kirimWA() {
-    const username = document.getElementById("username").value;
-
-    if (!username) {
-      alert("Enter a username!");
-      return;
-    }
-
-    const nomor = "6281337574016"; // GANTI DISINI
-    const pesan = `Hello,i want to buy:%0A
+  const nomor = "6281337574016";
+  const pesan = `Halo, saya ingin membeli:%0A
 Nama Rank: ${selectedRank}%0A
 Harga: Rp ${selectedPrice}%0A
 Username: ${username}`;
 
-    const url = `https://wa.me/${nomor}?text=${pesan}`;
-    window.open(url, "_blank");
+  const url = `https://wa.me/${nomor}?text=${pesan}`;
+  window.open(url, "_blank");
+  closeModal();
+}
+
+// Close modal when clicking outside
+document.getElementById("modal").addEventListener("click", function(e) {
+  if (e.target === this) {
+    closeModal();
   }
+});
 </script>
+
+<!-- MODAL INPUT USERNAME -->
+<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+  <div class="bg-[#1a1f3a] p-8 rounded-xl w-80 border border-indigo-800/50 backdrop-blur">
+    <h2 class="text-lg font-bold text-indigo-300 mb-4" style="font-family: 'Orbitron', sans-serif;">Masukkan Username</h2>
+
+    <input id="username" type="text" placeholder="Username kamu"
+      class="w-full p-3 rounded bg-[#0f172a] mb-4 outline-none border border-indigo-800/30 focus:border-indigo-500 transition text-white">
+
+    <button onclick="kirimWA()" class="glow-btn text-white px-4 py-2 rounded w-full font-semibold mb-2">
+      Lanjut ke WhatsApp
+    </button>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-white w-full py-2 rounded transition">
+      Tutup
+    </button>
+  </div>
+</div>
+
+<!-- Material Symbols (Google Icons) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+<!-- FOOTER -->
+<footer class="relative z-10 border-t border-indigo-800/30 mt-20 py-12 px-4 bg-[#0a0e27]/50">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <!-- About -->
+      <div>
+        <h3 class="font-bold text-indigo-300 mb-4" style="font-family: 'Orbitron', sans-serif;">CELESTIAL NETWORK</h3>
+        <p class="text-sm text-gray-400 mb-4">Server Minecraft Indonesia dengan pengalaman bermain terbaik untuk semua pemain.</p>
+        <p class="text-xs text-gray-500">Dibuat dengan ❤️ di Indonesia</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="font-bold text-gray-300 mb-4">Tautan</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#gamemodes" class="text-gray-400 hover:text-indigo-400 transition">Game Modes</a></li>
+          <li><a href="#toko" class="text-gray-400 hover:text-indigo-400 transition">Store</a></li>
+          <li><a href="#leaderboard" class="text-gray-400 hover:text-indigo-400 transition">Leaderboard</a></li>
+          <li><a href="#komunitas" class="text-gray-400 hover:text-indigo-400 transition">Komunitas</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="font-bold text-gray-300 mb-4">Legal</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Terms of Service</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Server Rules</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-bold text-gray-300 mb-4">Kontak</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>📧 support@celestial.id</li>
+          <li>🎮 play.celestialnetwork.id</li>
+          <li>📍 Indonesia</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-indigo-800/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <p>© 2026 Celestial Network. Tidak berafiliasi dengan Mojang AB.</p>
+      <p>Dirancang & Dikembangkan dengan ❤️</p>
+    </div>
+  </div>
+</footer>
+
 
 </body>
 </html>
