@@ -1,1073 +1,486 @@
-html{
-  scroll-behavior:smooth;
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Monld Network</title>
 
-/* Scrollbar Custom */
-::-webkit-scrollbar{
-  width:10px;
-}
+  <!-- Tailwind CDN -->
+   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-::-webkit-scrollbar-track{
-  background:#0a0e27;
-}
+  <!-- Font: Space Grotesk -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(
-    180deg,
-    #6366f1,
-    #8b5cf6
-  );
-  border-radius:20px;
-}
+</head>
+<body class="text-white">
+<div id="progress-bar"></div>
+<div id="preloader">
+  <div class="preloader-inner">
+    <div class="text-2xl font-bold mb-2">MONLD NETWORK</div>
+    <div class="text-sm text-gray-300">Membangun dunia baru...</div>
+  </div>
+</div>
+<div id="warp-overlay"></div>
+<div id="nebula"></div>
+<div id="constellation"></div>
+<div id="particles-js"></div>
+<div id="threejs-wrapper"><canvas id="threejs-canvas"></canvas></div>
+<div id="custom-cursor"></div>
+<div class="aurora"></div>
+<div class="galaxy"></div>
 
-::-webkit-scrollbar-thumb:hover{
-  background:linear-gradient(
-    180deg,
-    #818cf8,
-    #a78bfa
-  );
-}
+<!-- BLACKHOLE -->
+<div class="planet planet-1"></div>
+<div class="planet planet-2"></div>
+<div class="planet planet-3"></div>
+<div class="planet planet-4"></div>
 
-/* Scroll Reveal Animation */
-.reveal{
-  opacity:0;
-  transform:translateY(60px);
-  transition:
-    opacity 1s ease,
-    transform 1s ease;
-}
+ <!-- BLACKHOLE SIDE BACKGROUND -->
+<div class="side-blackhole">
+  <div class="bh-ring"></div>
+  <div class="bh-ring ring-2"></div>
+  <div class="bh-core"></div>
+  <div class="bh-glow"></div>
+</div>
 
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
+<!-- NEBULA -->
+<div class="nebula nebula-1"></div>
+<div class="nebula nebula-2"></div>
+</div>
 
-/* Smooth floating effect */
-.float{
-  animation:floating 4s ease-in-out infinite;
-}
+<!-- Bintang background -->
+<div class="stars" id="stars"></div>
 
-@keyframes floating{
-  0%,100%{
-    transform:translateY(0px);
-  }
-
-  50%{
-    transform:translateY(-10px);
-  }
-}
-
-/* Navbar smooth background */
-nav{
-  transition:
-    background .4s ease,
-    backdrop-filter .4s ease,
-    padding .4s ease;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Space Grotesk', sans-serif;
-  background: radial-gradient(circle at top, rgba(15,23,42,0.95), rgba(10,14,39,1) 35%), linear-gradient(135deg, #0a0e27 0%, #1a1a4d 50%, #0f0f2e 100%);
-  min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  background-attachment: fixed;
-  color: #fff;
-  transition: background 0.8s ease;
-  background-size: cover;
-  background-position: center;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at top right, rgba(99,102,241,0.12), transparent 35%), linear-gradient(180deg, rgba(99,102,241,0.08), transparent 55%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.aurora {
-  position: fixed;
-  top: -20%;
-  left: -10%;
-  width: 140%;
-  height: 60%;
-  background: linear-gradient(145deg, rgba(99,102,241,0.18), rgba(14,165,233,0.1), rgba(168,85,247,0.12));
-  filter: blur(40px);
-  opacity: 0.85;
-  animation: driftAurora 16s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* dst... */
-
-/* CUSTOM CURSOR */
-body {
-  cursor: none;
-}
-
-#custom-cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #8b5cf6;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  transition:
-    transform 0.15s ease,
-    width 0.2s ease,
-    height 0.2s ease,
-    background 0.2s ease;
-  backdrop-filter: blur(2px);
-}
-
-#custom-cursor.hover {
-  width: 34px;
-  height: 34px;
-  background: rgba(139, 92, 246, 0.25);
-}
-
-#custom-cursor.click {
-  transform: translate(-50%, -50%) scale(0.8);
-}
-
-/* Glow while scrolling */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top left,
-    rgba(99,102,241,.10),
-    transparent 40%),
+<!-- NAVBAR -->
+<nav class="navbar-glass fixed top-0 left-0 w-full z-[9999] backdrop-blur-xl bg-[#0a0f2a]/70 border-b border-indigo-800/30 flex items-center justify-between px-10 py-4">
+  <body class="text-white bg-[#070b1a] overflow-x-hidden"></body>
+  <h1 class="text-2xl font-bold gradient-text" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 3px;">MONLD NETWORK</h1>
+  <div class="flex gap-8 items-center">
+    <a href="#beranda" class="text-gray-400 hover:text-indigo-400 transition">Home</a>
+    <a href="#gamemodes" class="text-gray-400 hover:text-indigo-400 transition">Game Modes</a>
+    <a href="#toko" class="text-gray-400 hover:text-indigo-400 transition">Store</a>
+    <a href="#leaderboard" class="text-gray-400 hover:text-indigo-400 transition">Leaderboard</a>
+    <a href="#komunitas" class="text-gray-400 hover:text-indigo-400 transition">Komunitas</a>
     
-    radial-gradient(circle at bottom right,
-    rgba(139,92,246,.10),
-    transparent 40%);
+    <!-- Region Selector -->
+    <select id="region-select" class="bg-[#1a1f3a]/80 text-indigo-300 border border-indigo-800/50 rounded px-3 py-2 text-sm font-semibold hover:border-indigo-500 transition">
+      <option value="sg">🇸🇬 Singapore</option>
+      <option value="id" selected>🇮🇩 Indonesia</option>
+      <option value="my">🇲🇾 Malaysia</option>
+      <option value="th">🇹🇭 Thailand</option>
+    </select>
     
-  pointer-events:none;
-  z-index:0;
-}
-
-#particles-js {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-
-#nebula {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.18), transparent 24%),
-              radial-gradient(circle at 80% 25%, rgba(14, 165, 233, 0.14), transparent 22%),
-              radial-gradient(circle at 50% 75%, rgba(59, 130, 246, 0.12), transparent 25%);
-  filter: blur(32px);
-  opacity: 0.85;
-  animation: nebulaDrift 28s ease-in-out infinite alternate;
-}
-
-#warp-overlay {
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(148,163,184,0.16), transparent 32%),
-              linear-gradient(180deg, rgba(30,41,59,0.92), rgba(15,23,42,0.98));
-  pointer-events: none;
-  z-index: 70;
-  animation: warpFade 1.5s ease forwards;
-}
-
-@keyframes warpFade {
-  0% { opacity: 1; transform: scale(1); }
-  60% { opacity: 0.65; transform: scale(1.04); }
-  100% { opacity: 0; transform: scale(1.08); }
-}
-
-@keyframes nebulaDrift {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(18px, -18px, 0); }
-}
-
-#constellation {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-#constellation::before,
-#constellation::after {
-  content: "";
-  position: absolute;
-  border: 1px solid rgba(148,163,184,0.16);
-  width: 38%;
-  top: 14%;
-  left: 8%;
-  transform: rotate(12deg);
-  opacity: 0.7;
-  animation: lineGlow 6s ease-in-out infinite;
-}
-
-#constellation::after {
-  top: 55%;
-  left: 45%;
-  width: 45%;
-  transform: rotate(-8deg);
-  animation-delay: 2s;
-}
-
-@keyframes lineGlow {
-  0%, 100% { opacity: 0.18; }
-  50% { opacity: 0.55; }
-}
-
-#threejs-wrapper {
-  position: fixed;
-  bottom: 5rem;
-  right: 2rem;
-  width: 260px;
-  height: 260px;
-  pointer-events: none;
-  z-index: 5;
-  opacity: 0.95;
-}
-
-#threejs-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-#custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255,255,255,0.95);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 9999;
-  transition: width 0.15s ease, height 0.15s ease, background 0.15s ease, border-color 0.15s ease;
-  mix-blend-mode: difference;
-}
-
-#custom-cursor.hover {
-  width: 34px;
-  height: 34px;
-  background: rgba(99,102,241,0.18);
-  border-color: rgba(99,102,241,0.95);
-}
-
-.glass-panel {
-  background: rgba(15,23,42,0.65);
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 18px 50px rgba(0,0,0,0.22);
-}
-
-.animated-gradient-text {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4, #a855f7);
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradientMove 8s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-body {
-  cursor: none;
-}
-
-input,
-textarea,
-select,
-button {
-  cursor: auto;
-}
-
-button:hover,
-.card-hover:hover,
-a:hover {
-  cursor: none;
-}
-
-/* Player Dashboard Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-table tr:hover {
-  background-color: rgba(99, 102, 241, 0.1);
-}
-
-table td {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-/* Region Selector */
-#region-select {
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 0.5rem center;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
-}
-
-#region-select:hover {
-  border-color: #6366f1 !important;
-}
-
-/* Login Modal Input */
-#login-modal input:focus {
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
-.social-icon {
-  width: 58px;
-  height: 58px;
-  margin: 0 auto 1rem;
-  transition: all 0.35s ease;
-  filter: drop-shadow(0 0 10px rgba(99,102,241,0.35));
-}
-
-.social-card:hover .social-icon {
-  transform: scale(1.12) translateY(-4px);
-}
-
-/* Discord */
-.discord-glow:hover .social-icon {
-  filter:
-    drop-shadow(0 0 10px #5865F2)
-    drop-shadow(0 0 25px #5865F2);
-}
-
-/* TikTok */
-.tiktok-glow:hover .social-icon {
-  filter:
-    drop-shadow(0 0 10px #ff0050)
-    drop-shadow(0 0 25px #00f2ea);
-}
-
-/* Instagram */
-.instagram-glow:hover .social-icon {
-  filter:
-    drop-shadow(0 0 10px #ff00aa)
-    drop-shadow(0 0 25px #ff7a00);
-}
-
-/* WhatsApp */
-.whatsapp-glow:hover .social-icon {
-  filter:
-    drop-shadow(0 0 10px #25D366)
-    drop-shadow(0 0 25px #25D366);
-}
-
-/* ICON ROTATE EFFECT */
-.social-icon {
-  width: 58px;
-  height: 58px;
-  margin: 0 auto 1rem;
-  transition:
-    transform 0.6s ease,
-    filter 0.35s ease;
-  
-  filter: drop-shadow(0 0 10px rgba(99,102,241,0.35));
-}
-
-/* Efek hover */
-.social-card:hover .social-icon {
-  transform:
-    rotate(360deg)
-    scale(1.2)
-    translateY(-5px);
-
-  filter:
-    drop-shadow(0 0 12px rgba(255,255,255,0.5))
-    drop-shadow(0 0 30px currentColor);
-}
-
-/* Animasi idle pelan */
-.social-icon {
-  animation: floatIcon 4s ease-in-out infinite;
-}
-
-@keyframes floatIcon {
-  0% {
-    transform: translateY(0px);
-  }
-  
-  50% {
-    transform: translateY(-6px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-/* GLOW BERGERAK */
-.social-card {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Aura glow bergerak */
-.social-card::before {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  background: radial-gradient(circle,
-    rgba(99,102,241,0.35),
-    transparent 70%);
+    <a href="#" class="glow-btn text-white px-6 py-2 rounded-lg font-semibold">
+      Main Sekarang
+    </a>
     
-  top: -40%;
-  left: -40%;
+    <!-- Login Button -->
+    <button onclick="openLoginModal()" class="border border-indigo-500 text-indigo-300 px-6 py-2 rounded-lg font-semibold hover:bg-indigo-500/10 transition">
+      Login
+    </button>
+  </div>
+</nav>
 
-  animation: moveGlow 6s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-}
+<!-- WELCOME SECTION ATAS -->
+<section id="beranda" class="reveal flex flex-col items-center justify-center min-h-[40vh] pt-40 pb-16">
+  <div class="text-center max-w-3xl">
+    <h1 class="hero-title text-5xl md:text-7xl font-bold mb-4" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 3px;">
+      Selamat Datang di<br>
+      <span class="gradient-text animated-gradient-text">MONLD NETWORK</span>
+    </h1>
+    <p class="text-xl text-gray-400 mb-8">Tempat semua orang untuk membuat karya dan mencari teman baru disini</p>
+    
+    <!-- SERVER STATS -->
+    <div class="grid grid-cols-3 gap-6 mb-8">
+      <div class="bg-[#1a1f3a]/60 rounded-lg p-4 border border-indigo-800/30 backdrop-blur">
+        <p class="text-3xl font-bold text-indigo-400">0</p>
+        <p class="text-sm text-gray-400 mt-1">Pemain Online</p>
+      </div>
+      <div class="bg-[#1a1f3a]/60 rounded-lg p-4 border border-indigo-800/30 backdrop-blur">
+        <p class="text-3xl font-bold text-indigo-400">1.21.6+</p>
+        <p class="text-sm text-gray-400 mt-1">Versi Server</p>
+      </div>
+      <div class="bg-[#1a1f3a]/60 rounded-lg p-4 border border-indigo-800/30 backdrop-blur">
+        <p class="text-3xl font-bold text-indigo-400">0</p>
+        <p class="text-sm text-gray-400 mt-1">Pemain Terdaftar</p>
+      </div>
+    </div>
 
-/* Glow kedua */
-.social-card::after {
-  content: "";
-  position: absolute;
-  width: 140px;
-  height: 140px;
+    <div class="flex gap-4 justify-center">
+      <button class="glow-btn text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2">
+        <span class="material-symbols-outlined">sports_esports</span>
+        Main Sekarang
+      </button>
+      <button class="border border-indigo-500 text-indigo-300 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-500/10 transition flex items-center gap-2">
+    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" class="w-5 h-5 invert" alt="Discord">
+    Bergabung Discord
+</button>
+    </div>
+  </div>
+</section>
 
-  background: radial-gradient(circle,
-    rgba(168,85,247,0.25),
-    transparent 70%);
+<!-- SERVER ADDRESS -->
+<section class="flex justify-center items-center gap-4 px-4 mb-16 z-10 relative">
+  <div class="glass-panel bg-[#1a1f3a]/60 rounded-3xl px-6 py-5 border border-indigo-800/30 backdrop-blur flex flex-col sm:flex-row items-center gap-4 max-w-3xl">
+    <span id="status-dot" class="w-3 h-3 bg-red-400 rounded-full"></span>
+    <div>
+      <p class="text-sm text-gray-300 mb-1">Live Server Status: <span id="server-status" class="text-indigo-300 font-semibold">Memeriksa...</span></p>
+      <p id="status-detail" class="text-xs text-gray-500">Menghubungkan ke galaksi...</p>
+    </div>
+    <button id="refresh-status" class="glow-btn text-white px-4 py-2 rounded text-sm font-semibold transition">Refresh</button>
+  </div>
+</section>
 
-  bottom: -30%;
-  right: -30%;
+<!-- SECTION: GAME MODES -->
+<section id="gamemodes" class="reveal px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text animated-gradient-text" style="font-family: 'Space Grotesk', sans-serif;">GAME MODES</h2>
+    <p class="text-center text-gray-400 mb-16">Jelajahi berbagai mode permainan yang unik, menantang, dan penuh petualangan seru</p>
 
-  animation: moveGlowReverse 8s linear infinite;
-  pointer-events: none;
-  z-index: 0;
-}
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Survival Mix -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <div class="w-12 h-12 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-xl">🌍</span>
+        </div>
+        <h3 class="text-xl font-bold text-indigo-300 mb-2">Survival Mix</h3>
+        <p class="text-gray-400 text-sm mb-4">Survival dengan twist! Enchant kustom, item unik, pets, dan banyak lagi!</p>
+        <div class="text-xs text-gray-500">Berjalan sejak: coming soon</div>
+      </div>
 
-/* Supaya isi card di atas glow */
-.social-card > * {
-  position: relative;
-  z-index: 2;
-}
+      <!-- SkyBlock Tycoon -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-xl">🏝️</span>
+        </div>
+        <h3 class="text-xl font-bold text-purple-300 mb-2">SkyBlock Tycoon</h3>
+        <p class="text-gray-400 text-sm mb-4">Jadilah pemain terkaya! Generator, energi, island modules, dan banyak lagi!</p>
+        <div class="text-xs text-gray-500">Berjalan sejak: coming soon</div>
+      </div>
 
-/* Hover glow lebih terang */
-.social-card:hover::before {
-  opacity: 1;
-  filter: blur(10px);
-}
+      <!-- Creative Mode -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-lg mb-4 flex items-center justify-center">
+          <span class="text-xl">🎨</span>
+        </div>
+        <h3 class="text-xl font-bold text-cyan-300 mb-2">Creative Mode</h3>
+        <p class="text-gray-400 text-sm mb-4">Buat bangunan dengan tools yang kuat! WorldEdit, Arceon, aset, dan lainnya!</p>
+        <div class="text-xs text-gray-500">Berjalan sejak: coming soon</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-.social-card:hover::after {
-  opacity: 1;
-  filter: blur(14px);
-}
+<!-- SECTION: ABOUT SERVER -->
+<section id="tentang" class="reveal px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Space Grotesk', sans-serif;">TENTANG MONLD NETWORK</h2>
+    <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Pertama kali dirilis pada coming soon, Monld Network adalah server Minecraft Indonesia yang menghadirkan pengalaman bermain terbaik untuk semua pemain.</p>
 
-/* Animasi glow */
-@keyframes moveGlow {
-  0% {
-    transform: translate(0,0) rotate(0deg);
-  }
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-indigo-300 mb-3">🛡️ Anti-Cheat & Moderasi Kuat</h3>
+        <p class="text-gray-400 text-sm">Dilengkapi sistem Anti-Cheat terbaik dan tim moderasi profesional yang aktif, memastikan pengalaman bermain yang adil untuk semua pemain.</p>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-purple-300 mb-3">⚡ Latensi Rendah & Uptime Tinggi</h3>
+        <p class="text-gray-400 text-sm">Infrastruktur premium memastikan latensi rendah dengan uptime 99,9%. Main kapan saja tanpa khawatir server down.</p>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-cyan-300 mb-3">💾 Backup Data Maksimal</h3>
+        <p class="text-gray-400 text-sm">Sistem backup otomatis berjalan setiap beberapa jam, menjamin seluruh progress dan data kamu tersimpan aman.</p>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-pink-300 mb-3">👥 Komunitas Aktif & Ramah</h3>
+        <p class="text-gray-400 text-sm">Bergabung dengan ribuan member aktif di Discord. Kami berusaha membangun lingkungan positif dan saling menghargai.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  50% {
-    transform: translate(40px,30px) rotate(180deg);
-  }
+<!-- SECTION: RANK / STORE -->
+<section id="toko" class="reveal px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Space Grotesk', sans-serif;">PREMIUM RANK</h2>
+    <p class="text-center text-gray-400 mb-16">Tingkatkan pengalaman bermain Anda dengan rank premium eksklusif</p>
 
-  100% {
-    transform: translate(0,0) rotate(360deg);
-  }
-}
+    <div class="grid md:grid-cols-5 gap-4">
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">⭐</div>
+        <h3 class="font-bold text-indigo-300 mb-2">Asteroid</h3>
+        <p class="text-xs text-gray-400 mb-3">Paling Populer!</p>
+        <p class="text-2xl font-bold text-indigo-400 mb-4">Rp 60K</p>
+        <button onclick="beliRank('Asteroid','60000')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-purple-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">💎</div>
+        <h3 class="font-bold text-purple-300 mb-2">Bulan</h3>
+        <p class="text-xs text-gray-400 mb-3">Banyak Dipilih</p>
+        <p class="text-2xl font-bold text-purple-400 mb-4">Rp 100K</p>
+        <button onclick="beliRank('Bulan','100000')" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-cyan-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">🌟</div>
+        <h3 class="font-bold text-cyan-300 mb-2">Orbiter</h3>
+        <p class="text-xs text-gray-400 mb-3">Banyak Dipilih</p>
+        <p class="text-2xl font-bold text-cyan-400 mb-4">Rp 140K</p>
+        <button onclick="beliRank('Orbiter','140000')" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-pink-800/30 backdrop-blur text-center">
+        <div class="text-4xl mb-3">🌌</div>
+        <h3 class="font-bold text-pink-300 mb-2">Galaxy</h3>
+        <p class="text-xs text-gray-400 mb-3">Banyak Dipilih</p>
+        <p class="text-2xl font-bold text-pink-400 mb-4">Rp 200K</p>
+        <button onclick="beliRank('Galaxy','200000')" class="w-full bg-pink-600 hover:bg-pink-700 text-white py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+      <div class="card-hover bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-6 border border-yellow-600/50 backdrop-blur text-center relative">
+        <div class="absolute top-2 right-2 bg-yellow-500 text-black text-xs font-bold px-2 py-1 rounded">BEST VALUE</div>
+        <div class="text-4xl mb-3">✨</div>
+        <h3 class="font-bold text-yellow-300 mb-2">Milkyway</h3>
+        <p class="text-xs text-gray-300 mb-3">Terbaik!</p>
+        <p class="text-2xl font-bold text-yellow-400 mb-4">Rp 280K</p>
+        <button onclick="beliRank('Milkyway','280000')" class="w-full bg-yellow-600 hover:bg-yellow-700 text-black py-2 rounded text-sm font-semibold transition">Beli Sekarang</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-@keyframes moveGlowReverse {
-  0% {
-    transform: translate(0,0) rotate(0deg);
-  }
+<!-- SECTION: TOP PLAYERS -->
+<section id="leaderboard" class="reveal px-4 py-20 z-10 relative">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Space Grotesk', sans-serif;">PEMAIN TERATAS & STATISTIK</h2>
+    <p class="text-center text-gray-400 mb-16">Lihat peringkat pemain dan statistik terbaik</p>
 
-  50% {
-    transform: translate(-30px,-20px) rotate(-180deg);
-  }
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Player Rankings Table -->
+      <div class="lg:col-span-2 card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-indigo-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-indigo-300 mb-6">👥 Top 10 Player</h3>
+        <div class="flex items-center justify-between mb-6">
+  <div>
+    <p class="text-sm text-gray-400">Player aktif hari ini</p>
+  </div>
 
-  100% {
-    transform: translate(0,0) rotate(-360deg);
-  }
-}
+  <div class="flex -space-x-2">
+    <img src="https://mc-heads.net/avatar/Azraell"
+    class="w-10 h-10 rounded-full border-2 border-[#0f172a]">
 
-@keyframes blackholeSpin {
-  from {
-    transform: rotate(0deg) scale(1);
-  }
-  to {
-    transform: rotate(360deg) scale(1.05);
-  }
-}
+    <img src="https://mc-heads.net/avatar/Sanderpa"
+    class="w-10 h-10 rounded-full border-2 border-[#0f172a]">
 
-@keyframes blackholeSpinReverse {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
-  }
-}
+    <img src="https://mc-heads.net/avatar/aetherkyle"
+    class="w-10 h-10 rounded-full border-2 border-[#0f172a]">
 
-@keyframes pulseBlackhole {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.04);
-    opacity: 1;
-  }
-}
+    <div class="w-10 h-10 rounded-full bg-indigo-600 border-2 border-[#0f172a] flex items-center justify-center text-xs font-bold">
+      +99
+    </div>
+  </div>
+</div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-indigo-800/50">
+                <th class="text-left py-2 px-2 text-indigo-400">#</th>
+                <th class="text-left py-2 px-2 text-indigo-400">Nama</th>
+                <th class="text-center py-2 px-2 text-indigo-400">Rank</th>
+                <th class="text-center py-2 px-2 text-indigo-400">Playtime</th>
+                <th class="text-center py-2 px-2 text-green-400">Kill</th>
+                <th class="text-center py-2 px-2 text-red-400">Dead</th>
+                <th class="text-center py-2 px-2 text-cyan-400">Bergabung</th>
+              </tr>
+            </thead>
+            <tbody id="player-list">
+              <!-- Generated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-@keyframes driftParticles {
-  from {
-    transform: rotate(0deg) translateY(0px);
-  }
-  to {
-    transform: rotate(8deg) translateY(-12px);
-  }
-}
+      <!-- Donors Section -->
+      <div class="card-hover bg-[#1a1f3a]/60 rounded-xl p-6 border border-yellow-800/30 backdrop-blur">
+        <h3 class="text-lg font-bold text-yellow-300 mb-6">💳 Donatur Terbaru</h3>
+        <div class="overflow-hidden" id="donors-wrapper">
+          <div class="donor-carousel" id="donors-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-/* =========================
-   SIDE BLACKHOLE
-========================= */
+<!-- SECTION: KOMUNITAS -->
+<section id="komunitas" class="reveal px-4 py-20 z-10 relative">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-4 gradient-text" style="font-family: 'Space Grotesk', sans-serif;">BERGABUNG DENGAN KOMUNITAS</h2>
+    <p class="text-center text-gray-400 mb-16">Tetap terhubung dengan kami di media sosial untuk pembaruan terbaru</p>
 
-.side-blackhole{
-  position: fixed;
-  right: -220px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 850px;
-  height: 850px;
-  pointer-events: none;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    <div class="grid md:grid-cols-4 gap-8">
+      <a href="https://discord.gg/monld"
+class="social-card discord-glow card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-indigo-800/30 backdrop-blur text-center hover:border-indigo-500/60">
 
-/* BLACKHOLE CORE */
-.bh-core{
-  position: absolute;
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle,
-      #000 15%,
-      #050510 45%,
-      rgba(0,0,0,0.95) 70%,
-      rgba(0,0,0,0.2) 100%);
+  <img
+    src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg"
+    class="social-icon invert"
+    alt="Discord">
+
+  <h3 class="text-lg font-bold text-indigo-300 mb-2">Discord</h3>
+  <p class="text-sm text-gray-400">
+    Bergabung dengan komunitas kami di Discord
+  </p>
+</a>
       
-  box-shadow:
-    0 0 80px rgba(139,92,246,0.6),
-    0 0 160px rgba(99,102,241,0.35),
-    0 0 260px rgba(168,85,247,0.25);
-
-  z-index: 5;
-}
-
-/* GLOW */
-.bh-glow{
-  position: absolute;
-  width: 520px;
-  height: 520px;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle,
-      rgba(168,85,247,0.18),
-      rgba(99,102,241,0.12),
-      transparent 70%);
-      
-  filter: blur(45px);
-  animation: pulseGlow 5s ease-in-out infinite;
-}
-
-/* MAIN RING */
-.bh-ring{
-  position: absolute;
-  width: 700px;
-  height: 220px;
-  border-radius: 50%;
-  
-  background:
-    linear-gradient(
-      90deg,
-      rgba(255,255,255,0),
-      rgba(255,255,255,0.95),
-      rgba(168,85,247,1),
-      rgba(14,165,233,0.95),
-      rgba(255,255,255,0)
-    );
-
-  filter: blur(12px);
-  transform: rotate(-15deg);
-  animation: spinRing 18s linear infinite;
-  
-  box-shadow:
-    0 0 60px rgba(168,85,247,0.55),
-    0 0 120px rgba(99,102,241,0.35);
-}
-
-/* SECOND RING */
-.ring-2{
-  width: 760px;
-  height: 170px;
-
-  opacity: 0.5;
-
-  filter: blur(25px);
-
-  animation:
-    spinRingReverse 28s linear infinite;
-}
-
-/* DISTORTION EFFECT */
-.side-blackhole::before{
-  content: "";
-  position: absolute;
-  width: 540px;
-  height: 540px;
-  border-radius: 50%;
-
-  background:
-    radial-gradient(circle,
-      rgba(255,255,255,0.08),
-      rgba(99,102,241,0.05),
-      transparent 75%);
-
-  filter: blur(30px);
-
-  animation: distort 10s ease-in-out infinite;
-}
-
-/* PARTICLE LIGHT */
-.side-blackhole::after{
-  content: "";
-  position: absolute;
-  width: 900px;
-  height: 900px;
-  border-radius: 50%;
-
-  background:
-    radial-gradient(circle at 30% 40%, rgba(255,255,255,0.18), transparent 10%),
-    radial-gradient(circle at 70% 30%, rgba(168,85,247,0.25), transparent 14%),
-    radial-gradient(circle at 60% 70%, rgba(14,165,233,0.18), transparent 12%);
-
-  animation: driftParticles 16s ease-in-out infinite alternate;
-
-  opacity: 0.7;
-}
-
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes spinRing{
-  from{
-    transform: rotate(-15deg) scale(1);
-  }
-  to{
-    transform: rotate(345deg) scale(1.02);
-  }
-}
-
-@keyframes spinRingReverse{
-  from{
-    transform: rotate(360deg);
-  }
-  to{
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes pulseGlow{
-  0%,100%{
-    transform: scale(1);
-    opacity: 0.75;
-  }
-
-  50%{
-    transform: scale(1.08);
-    opacity: 1;
-  }
-}
-
-@keyframes distort{
-  0%,100%{
-    transform: scale(1);
-  }
-
-  50%{
-    transform: scale(1.04);
-  }
-}
-
-@keyframes driftParticles{
-  from{
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  to{
-    transform: translateY(-25px) rotate(8deg);
-  }
-}
-
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    #6366f1,
-    #8b5cf6,
-    #22d3ee,
-    #6366f1
-  );
-  background-size: 300%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientMove 8s linear infinite;
-}
-
-@keyframes gradientMove {
-  0% { background-position: 0%; }
-  100% { background-position: 300%; }
-}
-
-.card-hover::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(
-    135deg,
-    rgba(99,102,241,0.5),
-    rgba(168,85,247,0.3),
-    rgba(34,211,238,0.4)
-  );
-
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-
-  pointer-events: none;
-}
-
-.card-hover {
-  position: relative;
-  overflow: hidden;
-}
-
-.stars {
-  animation: moveStars 120s linear infinite;
-}
-
-@keyframes moveStars {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-200px);
-  }
-}
-
-.nebula {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.nebula-1 {
-  width: 400px;
-  height: 400px;
-  background: #7c3aed;
-  top: 10%;
-  left: -100px;
-}
-
-.nebula-2 {
-  width: 500px;
-  height: 500px;
-  background: #06b6d4;
-  bottom: -150px;
-  right: -100px;
-}
-
-.nebula {
-  animation: nebulaFloat 18s ease-in-out infinite alternate;
-}
-
-@keyframes nebulaFloat {
-  from {
-    transform: translateY(0px) translateX(0px);
-  }
-  to {
-    transform: translateY(-30px) translateX(20px);
-  }
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    #6366f1,
-    #8b5cf6
-  );
-  border-radius: 999px;
-}
-
-#modal > div {
-  animation: popup 0.35s ease;
-}
-
-@keyframes popup {
-  from {
-    transform: scale(0.8);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-/* CUSTOM CURSOR */
-body {
-  cursor: none;
-}
-
-#custom-cursor {
-  width: 22px;
-  height: 22px;
-  border: 2px solid rgba(99,102,241,0.9);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-
-  backdrop-filter: blur(4px);
-
-  background: rgba(99,102,241,0.12);
-
-  box-shadow:
-    0 0 12px rgba(99,102,241,0.7),
-    0 0 28px rgba(168,85,247,0.5);
-
-  transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    background 0.2s ease,
-    transform 0.08s linear;
-}
-
-/* INNER DOT */
-#custom-cursor::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  box-shadow:
-    0 0 10px white,
-    0 0 20px #8b5cf6;
-}
-
-/* HOVER EFFECT */
-#custom-cursor.hover {
-  width: 42px;
-  height: 42px;
-
-  background: rgba(168,85,247,0.18);
-
-  border-color: #c084fc;
-
-  box-shadow:
-    0 0 18px rgba(192,132,252,0.9),
-    0 0 45px rgba(99,102,241,0.7);
-}
-
-/* CLICK EFFECT */
-#custom-cursor.click {
-  transform: translate(-50%, -50%) scale(0.8);
-}
-
-body{
-  cursor:none;
-}
-
-#custom-cursor{
-  position:fixed;
-  width:22px;
-  height:22px;
-
-  border:2px solid #8b5cf6;
-  border-radius:50%;
-
-  background:rgba(139,92,246,0.15);
-
-  box-shadow:
-    0 0 12px #8b5cf6,
-    0 0 24px #6366f1;
-
-  pointer-events:none;
-
-  transform:translate(-50%,-50%);
-
-  z-index:99999;
-
-  transition:
-    width .2s ease,
-    height .2s ease,
-    transform .08s linear;
-}
-
-/* DOT TENGAH */
-#custom-cursor::before{
-  content:"";
-
-  position:absolute;
-
-  top:50%;
-  left:50%;
-
-  width:5px;
-  height:5px;
-
-  background:white;
-
-  border-radius:50%;
-
-  transform:translate(-50%,-50%);
-}
-
-/* HOVER */
-#custom-cursor.hover{
-  width:40px;
-  height:40px;
-
-  background:rgba(168,85,247,.2);
-}
-
-/* CLICK */
-#custom-cursor.click{
-  transform:translate(-50%,-50%) scale(.8);
-}
-
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    #6366f1,
-    #8b5cf6,
-    #22d3ee
-  );
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.animated-gradient-text {
-  background-size: 300% 300%;
-
-  animation: gradientMove 6s ease infinite;
-}
-
-@keyframes gradientMove {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-#particles-js {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-}
-
-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-section {
-  position: relative;
-  z-index: 2;
-}
-
-section,
-nav,
-footer {
-  position: relative;
-  z-index: 10;
-}
-
-#particles-js,
-#nebula,
-#constellation,
-.aurora,
-.galaxy,
-.side-blackhole {
-  z-index: 0;
-  pointer-events: none;
-}
+      <a href="https://tiktok.com/@monldnetwork"
+class="social-card tiktok-glow card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-purple-800/30 backdrop-blur text-center hover:border-purple-500/60">
+
+  <img
+    src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg"
+    class="social-icon invert"
+    alt="TikTok">
+
+  <h3 class="text-lg font-bold text-purple-300 mb-2">TikTok</h3>
+  <p class="text-sm text-gray-400">
+    Konten menarik dan klip seru
+  </p>
+</a>
+
+      <a href="https://instagram.com/monldnetwork"
+class="social-card instagram-glow card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-cyan-800/30 backdrop-blur text-center hover:border-cyan-500/60">
+
+  <img
+    src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg"
+    class="social-icon invert"
+    alt="Instagram">
+
+  <h3 class="text-lg font-bold text-cyan-300 mb-2">Instagram</h3>
+  <p class="text-sm text-gray-400">
+    Update dan galeri terbaru
+  </p>
+</a>
+      <a href="https://wa.me/6281337574016" class="social-card whatsapp-glow card-hover bg-[#1a1f3a]/60 rounded-xl p-8 border border-pink-800/30 backdrop-blur text-center hover:border-pink-500/60">
+        <img
+          src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg"
+          class="social-icon invert"
+          alt="WhatsApp">
+        <h3 class="text-lg font-bold text-pink-300 mb-2">WhatsApp</h3>
+        <p class="text-sm text-gray-400">Berlangganan channel kami</p>
+      </a>
+    </div>
+  </div>
+</section>
+<!-- Material Symbols (Google Icons) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/three@0.159.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@0.4.7/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@3.9.3/tsparticles.min.js"></script>
+
+<!-- MODAL INPUT USERNAME -->
+<div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+  <div class="bg-[#1a1f3a] p-8 rounded-xl w-80 border border-indigo-800/50 backdrop-blur">
+    <h2 class="text-lg font-bold text-indigo-300 mb-4" style="font-family: 'Space Grotesk', sans-serif;">Masukkan Username</h2>
+
+    <input id="username" type="text" placeholder="Username kamu"
+      class="w-full p-3 rounded bg-[#0f172a] mb-4 outline-none border border-indigo-800/30 focus:border-indigo-500 transition text-white">
+
+    <button onclick="kirimWA()" class="glow-btn text-white px-4 py-2 rounded w-full font-semibold mb-2">
+      Lanjut ke WhatsApp
+    </button>
+    <button onclick="closeModal()" class="text-gray-400 hover:text-white w-full py-2 rounded transition">
+      Tutup
+    </button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="login-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
+  <div class="bg-[#1a1f3a] p-8 rounded-xl w-96 border border-indigo-800/50 backdrop-blur">
+    <h2 class="text-2xl font-bold text-indigo-300 mb-6" style="font-family: 'Space Grotesk', sans-serif;">Login Akun</h2>
+
+    <input id="login-email" type="email" placeholder="Email atau Username"
+      class="w-full p-3 rounded bg-[#0f172a] mb-4 outline-none border border-indigo-800/30 focus:border-indigo-500 transition text-white">
+
+    <input id="login-password" type="password" placeholder="Password"
+      class="w-full p-3 rounded bg-[#0f172a] mb-4 outline-none border border-indigo-800/30 focus:border-indigo-500 transition text-white">
+
+    <label class="flex items-center gap-2 text-sm text-gray-400 mb-6">
+      <input type="checkbox" class="w-4 h-4">
+      Ingat saya
+    </label>
+
+    <button onclick="handleLogin()" class="glow-btn text-white px-4 py-3 rounded w-full font-semibold mb-3">
+      Login
+    </button>
+    <button onclick="closeLoginModal()" class="text-gray-400 hover:text-white w-full py-2 rounded transition">
+      Batal
+    </button>
+
+    <p class="text-center text-sm text-gray-500 mt-4">Belum punya akun? <span class="text-indigo-400 hover:text-indigo-300 cursor-pointer">Daftar di sini</span></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="relative z-10 border-t border-indigo-800/30 mt-20 py-12 px-4 bg-[#0a0e27]/50">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-8">
+      <!-- About -->
+      <div>
+        <h3 class="font-bold text-indigo-300 mb-4" style="font-family: 'Space Grotesk', sans-serif;">MONLD NETWORK</h3>
+        <p class="text-sm text-gray-400 mb-4">Server Minecraft Indonesia dengan pengalaman bermain terbaik untuk semua pemain.</p>
+        <p class="text-xs text-gray-500">Dibuat dengan ❤️ di Indonesia</p>
+      </div>
+
+      <!-- Links -->
+      <div>
+        <h3 class="font-bold text-gray-300 mb-4">Tautan</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#gamemodes" class="text-gray-400 hover:text-indigo-400 transition">Game Modes</a></li>
+          <li><a href="#toko" class="text-gray-400 hover:text-indigo-400 transition">Store</a></li>
+          <li><a href="#leaderboard" class="text-gray-400 hover:text-indigo-400 transition">Leaderboard</a></li>
+          <li><a href="#komunitas" class="text-gray-400 hover:text-indigo-400 transition">Komunitas</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h3 class="font-bold text-gray-300 mb-4">Legal</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Terms of Service</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-indigo-400 transition">Server Rules</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="font-bold text-gray-300 mb-4">Kontak</h3>
+        <ul class="space-y-2 text-sm text-gray-400">
+          <li>📧 coming soon</li>
+          <li>🎮 coming soon</li>
+          <li>📍 Indonesia</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-indigo-800/20 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+      <p>© 2026 Monld Network. Tidak berafiliasi dengan Mojang AB.</p>
+      <p>Dirancang & Dikembangkan dengan ❤️</p>
+    </div>
+  </div>
+</footer>
+
+</script>
+<div class="card-hover reveal"></div>
+<script src="js/main.js"></script>
+<div id="toast"
+class="fixed bottom-6 right-6 bg-indigo-600 text-white px-5 py-3 rounded-xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 z-50">
+  IP berhasil disalin!
+</div>
+<button id="music-btn"
+class="fixed bottom-6 left-6 w-14 h-14 rounded-full bg-indigo-600 hover:bg-indigo-500 transition shadow-2xl z-50">
+  🎵
+</button>
+
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+</body>
+</html>
